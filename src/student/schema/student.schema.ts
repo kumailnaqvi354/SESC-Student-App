@@ -5,21 +5,20 @@ export type StudentDocument = HydratedDocument<Student>;
 
 @Schema()
 export class Student {
-  @Prop()
+  @Prop({ required: true })
   firstname: string;
 
-  @Prop()
+  @Prop({ required: true })
   lastname: string;
 
-  @Prop()
+  @Prop({ required: true })
   email: string;
 
-  @Prop()
+  @Prop({ required: true })
   DOB: string;
 
-  @Prop([String]) // Define an array property
-  courses: string[]; // Define the type of the array elements
-
+  @Prop([String]) 
+  courses: string[];
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);
