@@ -4,6 +4,7 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Student } from './schema/student.schema';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class StudentService {
@@ -11,8 +12,12 @@ export class StudentService {
     @InjectModel(Student.name) private studentModel: Model<Student>,
   ) {}
 
-  create(createStudentDto: CreateStudentDto) {
-    const createdStudent = new this.studentModel(createStudentDto);
+  async create(createStudentDto: CreateStudentDto) {
+    const hashedPassword = await bcrypt.hash(createStudentDto.password, 10); 
+    const createdStudent = new this.studentModel({
+      ...createStudentDto,
+      password: hashedPassword,
+    });
     return createdStudent.save();
   }
 
