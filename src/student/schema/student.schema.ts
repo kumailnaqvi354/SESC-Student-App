@@ -17,6 +17,9 @@ export class Student {
   @Prop({ required: true })
   email: string;
 
+  @Prop({required: true})
+  degree: string;
+  
   @Prop({ required: true })
   DOB: string;
 
