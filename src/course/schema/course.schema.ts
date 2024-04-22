@@ -12,9 +12,6 @@ export class Course {
   coursedescription: string;
 
   @Prop({ required: true })
-  password: string;
-
-  @Prop({ required: true })
   courseinstructor: string;
 }
 
