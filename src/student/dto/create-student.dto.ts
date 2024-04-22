@@ -4,5 +4,6 @@ export class CreateStudentDto {
     email: string;
     password: string;
     DOB: string;
+    degree: string;
     courses: string[];
 }
