@@ -6,9 +6,10 @@ import { StudentModule } from './student/student.module';
 import { ConfigModule } from '@nestjs/config';
 import { CourseModule } from './course/course.module';
 import { AuthModule } from './auth/auth.module';
+import { FinanceModule } from './finance/finance.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(),MongooseModule.forRoot(process.env.NEST_PUBLIC_MONGODB_URI), StudentModule, CourseModule, AuthModule],
+  imports: [ConfigModule.forRoot(),MongooseModule.forRoot(process.env.NEST_PUBLIC_MONGODB_URI), StudentModule, CourseModule, AuthModule, FinanceModule],
   controllers: [AppController],
   providers: [AppService],
 })

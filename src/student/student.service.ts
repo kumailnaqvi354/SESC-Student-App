@@ -18,6 +18,7 @@ export class StudentService {
       ...createStudentDto,
       password: hashedPassword,
     });
+    
     return createdStudent.save();
   }
 
