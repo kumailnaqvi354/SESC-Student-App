@@ -11,6 +11,7 @@ export class Finance {
 
   @Prop({ required: true })
   hasOutstandingBalance: string;
+  
   @Prop({ required: true })
   outstandingAmount: string;
 }
