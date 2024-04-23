@@ -1,4 +1,9 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateLibraryDto } from './create-library.dto';
 
-export class UpdateLibraryDto extends PartialType(CreateLibraryDto) {}
+export class UpdateLibraryDto extends PartialType(CreateLibraryDto) {
+    studentId: string;
+    dueDate: string;
+    type: string;
+    amount: string;
+}

@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLibraryDto } from './dto/create-library.dto';
 import { UpdateLibraryDto } from './dto/update-library.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Library } from './schema/library.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class LibraryService {
+  constructor(
+    @InjectModel(Library.name) private libraryModel: Model<Library>,
+  ) {}
   create(createLibraryDto: CreateLibraryDto) {
-    return 'This action adds a new library';
+    const libraryCreated = new this.libraryModel(createLibraryDto);
+    return libraryCreated.save();
   }
 
   findAll() {
