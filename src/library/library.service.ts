@@ -19,8 +19,8 @@ export class LibraryService {
     return `This action returns all library`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} library`;
+  findOne(id: string) {
+    return this.libraryModel.find({studentId: id});
   }
 
   update(id: number, updateLibraryDto: UpdateLibraryDto) {

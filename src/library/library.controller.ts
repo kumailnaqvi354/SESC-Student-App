@@ -19,7 +19,7 @@ export class LibraryController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.libraryService.findOne(+id);
+    return this.libraryService.findOne(id);
   }
 
   @Patch(':id')
