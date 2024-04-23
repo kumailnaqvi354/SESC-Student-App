@@ -13,11 +13,6 @@ export class StudentController {
     return this.studentService.create(createStudentDto);
   }
 
-  @Post(":email")
-  signIn(@Body() signInStudentDto: SignInStudentDto){
-    return this.studentService.signIn(signInStudentDto)
-  }
-
   @Get()
   findAll() {
     return this.studentService.findAll();

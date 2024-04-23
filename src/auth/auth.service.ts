@@ -1,11 +1,22 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Student } from 'src/student/schema/student.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class AuthService {
+  constructor(
+    @InjectModel(Student.name) private studentModel: Model<Student>,
+  ) {}
   create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+    const student = this.studentModel.find({ email: createAuthDto.email });
+    if (!student) {
+      throw new Error('Student not exists');
+    } else {
+      return student;
+    }
   }
 
   findAll() {

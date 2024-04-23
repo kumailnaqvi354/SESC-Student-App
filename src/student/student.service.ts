@@ -5,7 +5,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Student } from './schema/student.schema';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
-import { SignInStudentDto } from './dto/sigin-student.dto';
 
 @Injectable()
 export class StudentService {
@@ -22,17 +21,6 @@ export class StudentService {
     return createdStudent.save();
   }
 
-  async signIn(signInStudentDto: SignInStudentDto){
-    const student = this.studentModel.find({email: signInStudentDto.email});
-    if (!student) {
-      throw new BadRequestException('Student not exists');
-    }else{
-      console.log("debug student", student);
-      
-    }
-    
-  }
-
   findAll() {
     return `This action returns all student`;
   }
@@ -42,7 +30,7 @@ export class StudentService {
   }
 
   update(id: string, updateStudentDto: UpdateStudentDto) {
-    return this.studentModel.findByIdAndUpdate(id, updateStudentDto);
+    return this.studentModel.findByIdAndUpdate(id, updateStudentDto, { new: true });
   }
 
   remove(id: number) {
