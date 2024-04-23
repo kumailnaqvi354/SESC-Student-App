@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -30,7 +30,7 @@ export class StudentService {
   }
 
   update(id: string, updateStudentDto: UpdateStudentDto) {
-    return this.studentModel.findByIdAndUpdate(id, updateStudentDto);
+    return this.studentModel.findByIdAndUpdate(id, updateStudentDto, { new: true });
   }
 
   remove(id: number) {
