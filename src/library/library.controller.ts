@@ -24,7 +24,7 @@ export class LibraryController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateLibraryDto: UpdateLibraryDto) {
-    return this.libraryService.update(+id, updateLibraryDto);
+    return this.libraryService.update(id, updateLibraryDto);
   }
 
   @Delete(':id')

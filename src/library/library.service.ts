@@ -20,11 +20,14 @@ export class LibraryService {
   }
 
   findOne(id: string) {
-    return this.libraryModel.find({studentId: id});
+    return this.libraryModel.find({ studentId: id });
   }
 
-  update(id: number, updateLibraryDto: UpdateLibraryDto) {
-    return `This action updates a #${id} library`;
+  update(id: string, updateLibraryDto: UpdateLibraryDto) {
+    return this.libraryModel.findOneAndUpdate(
+      { studentId: id },
+      updateLibraryDto,
+    );
   }
 
   remove(id: number) {
