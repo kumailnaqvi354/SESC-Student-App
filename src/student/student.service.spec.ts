@@ -57,6 +57,4 @@ describe('StudentService', () => {
     });
   });
 
-  // Add similar test cases for findAll, findOne, update, and remove methods
-
 });

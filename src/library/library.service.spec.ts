@@ -4,6 +4,8 @@ import { CreateLibraryDto } from './dto/create-library.dto';
 import { UpdateLibraryDto } from './dto/update-library.dto';
 import { Model } from 'mongoose';
 import { mock } from 'jest'; // Assuming you're using a mocking library like `jest-mock`
+import { Library } from './schema/library.schema';
+import *  as bcrypt from "bcrypt";
 
 describe('LibraryService', () => {
   let libraryService: LibraryService;
